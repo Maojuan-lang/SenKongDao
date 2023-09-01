@@ -14,11 +14,15 @@ SLEEP_TIME = 3
 # 读取cookie
 cookie_file = open("SenKongDao_config.txt", "r+", encoding="utf8")
 cookie_lines = cookie_file.readlines()
+cookie_file.close()
 print("已读取" + str(len(cookie_lines)) + "个cookie")
 print(str(SLEEP_TIME) + "秒后进行签到...")
 time.sleep(SLEEP_TIME)
 
+# 遍历cookie
 for cookie_line in cookie_lines:
+
+    # 准备签到信息
     uid = cookie_line.split("&")[0]
     signing_cookie = cookie_line.split("&")[1]
     headers = {
@@ -30,8 +34,10 @@ for cookie_line in cookie_lines:
         "gameId": 1
     }
 
-
+    # 签到请求
     sign_response = requests.post(headers=headers, url=SIGN_URL, data=data)
+
+    # 检验返回是否为json格式
     try:
         sign_response_json = json.loads(sign_response.text)
     except:
@@ -40,9 +46,12 @@ for cookie_line in cookie_lines:
         time.sleep(SLEEP_TIME)
         sys.exit()
 
+    # 如果为json则解析
     code = sign_response_json.get("code")
     message = sign_response_json.get("message")
     data = sign_response_json.get("data")
+
+    # 返回成功的话，打印详细信息
     if code == SUCCESS_CODE:
         print("签到成功")
         awards = sign_response_json.get("data").get("awards")
@@ -54,4 +63,8 @@ for cookie_line in cookie_lines:
     else:
         print(sign_response_json)
         print("签到失败，请检查以上信息...")
+
+    # 休眠指定时间后，继续下个账户
     time.sleep(SLEEP_TIME)
+
+print("程序运行结束")
