@@ -23,8 +23,9 @@ time.sleep(SLEEP_TIME)
 for cookie_line in cookie_lines:
 
     # 准备签到信息
-    uid = cookie_line.split("&")[0]
-    signing_cookie = cookie_line.split("&")[1]
+    configs = cookie_line.split("&")
+    uid = configs[0].strip()
+    signing_cookie = configs[1].strip()
     headers = {
         "user-agent": "Skland/1.0.1 (com.hypergryph.skland; build:100001014; Android 25; ) Okhttp/4.11.0",
         "cred": signing_cookie
