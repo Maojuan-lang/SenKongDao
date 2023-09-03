@@ -1,0 +1,2 @@
+certifi>=2021.10.8
+requests>=2.26.0
