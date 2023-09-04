@@ -3,7 +3,7 @@
 
 1.使用pip install -r requirments.txt来安装依赖（实际上只需要requests，已安装可以跳过这步）
 
-2.在config文件中填入uid以及cred字段，其中xxx为uid（游戏内名称下方ID，一串数字），yyy为cred字段,uid与cred字段用&符号隔开  
+2.在SenKongDao_config.txt中填入uid以及cred字段，其中xxx为uid（游戏内名称下方ID，一串数字），yyy为cred字段,uid与cred字段用&符号隔开  
 
 > **Cred字段获取方式**
 > 1. 打开[森空岛](www.skyland.com)并登录，如果有多个账号需要获取，建议使用浏览器的隐身模式
