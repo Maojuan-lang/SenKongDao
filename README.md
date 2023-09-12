@@ -21,3 +21,9 @@ xxxxxx&yyyyyyyyyy
 ### 或使用 docker 运行
  1. 参考上面教程新建 `SenKongDao_config.txt` 文件，填入 `uid` 以及 `cred` 字段
  2. 运行 `docker run -v ./SenKongDao_config.txt:/app/SenKongDao_config.txt maojuan180/senkongdao` 其中 `./SenKongDao_config.txt` 为配置文件路径，可自行修改
+
+### 定时任务相关使用说明  
+ 1. 在任意目录使用`crontab -e`命令来编辑 cron 文件，第一次运行会让你选择一个编辑器，选择推荐的第一个编辑器即可。
+ 2. 在最后一行添加`10 0 * * * /usr/bin/docker run xxxx(镜像名称或镜像id)`，按`Ctrl+X`退出编辑，按`Y`确定，最后按`Enter（回车）`来保存。
+ 3. 第二步中cron表达式意思为每天的凌晨0:10运行，可以自行修改。
+ 4. 如果docker目录不对，可以用命令`which docker`查看一下自己docker的位置，修改第二步的命令。
