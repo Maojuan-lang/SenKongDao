@@ -1,6 +1,7 @@
 import json
 import sys
 import time
+import datetime
 
 import requests
 
@@ -10,6 +11,9 @@ SIGN_URL = "https://zonai.skland.com/api/v1/game/attendance"
 SUCCESS_CODE = 0
 # 休眠三秒继续其他账号签到
 SLEEP_TIME = 3
+
+# 打印当前时间
+print("当前时间为：" + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 # 读取cookie
 cookie_file = open("SenKongDao_config.txt", "r+", encoding="utf8")
