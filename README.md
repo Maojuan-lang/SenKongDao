@@ -12,8 +12,12 @@
 >    
 > 5. 控制台返回的一串长度为32的数字字母组合字符串即为所需Cred字段
 >
-支持多账号，每行一个账号即可  
+支持多账号，每行一个账号即可
 
 以下为某个账户的实例：  
 
 xxxxxx&yyyyyyyyyy
+
+### 或使用 docker 运行
+ 1. 参考上面教程新建 `SenKongDao_config.txt` 文件，填入 `uid` 以及 `cred` 字段
+ 2. 运行 `docker run -v ./SenKongDao_config.txt:/app/SenKongDao_config.txt cblackorange/senkongdao` 其中 `./SenKongDao_config.txt` 为配置文件路径，可自行修改
