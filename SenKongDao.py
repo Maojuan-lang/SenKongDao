@@ -31,8 +31,14 @@ for cookie_line in cookie_lines:
     uid = configs[0].strip()
     signing_cookie = configs[1].strip()
     headers = {
-        "user-agent": "Skland/1.0.1 (com.hypergryph.skland; build:100001014; Android 25; ) Okhttp/4.11.0",
-        "cred": signing_cookie
+        "user-agent": "Skland/1.0.1 (com.hypergryph.skland; build:100001014; Android 33; ) Okhttp/4.11.0",
+        "cred": signing_cookie,
+        "vName": "1.0.1",
+        "vCode": "100001014",
+        'Accept-Encoding': 'gzip',
+        'Connection': 'close',
+        "dId": "de9759a5afaa634f",
+        "platform": "1"
     }
     data = {
         "uid": str(uid),
