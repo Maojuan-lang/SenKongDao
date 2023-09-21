@@ -28,3 +28,9 @@ xxxxxx&yyyyyyyyyy
  3. 使用`docker ps -a`命令来查询docker容器的名称或者id。
  4. 第二步中cron表达式意思为每天的凌晨0:10运行，可以自行修改。
  5. 如果docker目录不对，可以用命令`which docker`查看一下自己docker的位置，修改第二步的命令。
+
+## 贡献者
+
+<a href="https://github.com/Maojuan-lang/SenKongDao/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Maojuan-lang/SenKongDao" />
+</a>
