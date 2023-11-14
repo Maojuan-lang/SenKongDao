@@ -1,6 +1,18 @@
 # SenKongDao
 明日方舟森空岛签到Python程序
 
+---
+
+## 目前脚本已失效
+早些时间脚本模拟旧版本签到，就在最近这种方式被阻止了。  
+在签到的时候多了几个加密参数，导致脚本无限期停更。
+
+注：新版app使用了梆梆企业加密。
+
+---
+
+## 旧版本脚本的使用说明（已失效）
+
 1.使用pip install -r requirments.txt来安装依赖（实际上只需要requests，已安装可以跳过这步）
 
 2.在SenKongDao_config.txt中填入uid以及cred字段，其中xxx为uid（游戏内名称下方ID，一串数字），yyy为cred字段,uid与cred字段用&符号隔开  
