@@ -3,6 +3,7 @@
 
 ---
 
+## 加密参引用说明
 
 加密参数计算方法使用[xxyz30的仓库](https://gitee.com/FancyCabbage/skyland-auto-sign/tree/master)的计算方法，
 
