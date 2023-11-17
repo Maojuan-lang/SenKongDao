@@ -25,6 +25,9 @@ time.sleep(sleep_time)
 
 # 遍历cookie
 for cookie_line in cookie_lines:
+    # 忽略以#开头的行（注释）
+    if cookie_line.startswith('#'):
+        continue
 
     # 准备签到信息
     configs = cookie_line.split("&")
