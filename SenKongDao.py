@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import time
 import datetime
@@ -15,22 +16,39 @@ app_version = constants.app_version
 # 打印当前时间
 print("当前时间为：" + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-# 读取cookie
-cookie_file = open("SenKongDao_config.txt", "r+", encoding="utf8")
-cookie_lines = cookie_file.readlines()
-cookie_file.close()
-print("已读取" + str(len(cookie_lines)) + "个cookie")
-print(str(sleep_time) + "秒后进行签到...")
-time.sleep(sleep_time)
+def get_uid_and_atoken():
+    account_list = []
+    # Github Actions 传递的 secrets
+    if "UID" in os.environ and "ATOKEN" in os.environ:
+        # 使用环境变量中的 UID 和 ATOKEN
+        print("使用环境变量")
+        uid_env = os.environ["UID"]
+        atoken_env = os.environ["ATOKEN"]
+        uids = uid_env.split('\n')
+        atokens = atoken_env.split('\n')
+        
+        # 遍历所有账号
+        account_list = [(uid.strip(), atoken.strip()) for uid, atoken in zip(uids, atokens)]
+    else:
+        cookie_file = open("SenKongDao_config.txt", "r+", encoding="utf8")
+        cookie_lines = cookie_file.readlines()
+        cookie_file.close()
+
+        # 将文件中的配置存储为元组的列表
+        for cookie_line in cookie_lines:
+            configs = cookie_line.split("&")
+            uid = configs[0].strip()
+            atoken = configs[1].strip()
+            account_list.append((uid, atoken))
+
+    print("已读取" + str(len(account_list)) + "个cookie")
+    print(str(sleep_time) + "秒后进行签到...")
+    time.sleep(sleep_time)
+    return account_list
 
 # 遍历cookie
-for cookie_line in cookie_lines:
-
-    # 准备签到信息
-    configs = cookie_line.split("&")
-    uid = configs[0].strip()
-    atoken = configs[1].strip()
-
+account_list = get_uid_and_atoken()
+for uid, atoken in account_list:
     # 获取签到用的值
     cred_resp = headersGenerator.get_cred_by_token(atoken)
     sign_token = cred_resp['token']

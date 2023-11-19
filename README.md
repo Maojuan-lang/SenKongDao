@@ -29,6 +29,15 @@
 
 xxxxxx&yyyyyyyyyy
 
+### 使用 Github Actions 定时运行执行签到
+ 1. 首先 fork 仓库到自己账号下
+ 2. 设置 `UID` 和 `TOKEN`
+ 3. 你可以参考上面教程新建 `SenKongDao_config.txt` 文件，填入 `uid` 以及 `TOKEN` 字段（不推荐，如非必要请在私人仓库这么做）
+ 4. 或者在自己项目页面，依次点击 Settings → Secrets → Secrets and variables → Actions，
+    点击 New repository secret，并创建 `UID` 和 `TOKEN`，填写值，`UID` 与 `TOKEN` 值一一对应，对于多账号则依次换行填写。
+    最后在项目中点击 Actions，`(Enable workflow)` 启动对应的 Actions 即可每日自动签到
+ 5. 若要手动运行，找到对应的 Actions 并点击 Run workflow 即可立即运行
+
 ### 或使用 docker 运行
  1. 参考上面教程新建 `SenKongDao_config.txt` 文件，填入 `uid` 以及 `cred` 字段
  2. 运行 `docker run -v ./SenKongDao_config.txt:/app/SenKongDao_config.txt maojuan180/senkongdao` 其中 `./SenKongDao_config.txt` 为配置文件路径，可自行修改
