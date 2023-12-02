@@ -9,6 +9,10 @@
 
 ---
 
+为了防止仓库消失，已删除GitHub Actions使用方法。
+
+---
+
 ## 新版本脚本的使用说明（重要变动，cred变为token）
 
 1.使用pip install -r requirments.txt来安装依赖（实际上只需要requests，已安装可以跳过这步）
