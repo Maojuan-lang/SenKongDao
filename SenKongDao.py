@@ -19,12 +19,16 @@ print("当前时间为：" + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S
 cookie_file = open("SenKongDao_config.txt", "r+", encoding="utf8")
 cookie_lines = cookie_file.readlines()
 cookie_file.close()
-print("已读取" + str(len(cookie_lines)) + "个cookie")
+valid_cookie_lines = [line for line in cookie_lines if not line.startswith('#')]
+print("已读取" + str(len(valid_cookie_lines)) + "个cookie")
 print(str(sleep_time) + "秒后进行签到...")
 time.sleep(sleep_time)
 
 # 遍历cookie
 for cookie_line in cookie_lines:
+    # 忽略以#开头的行（注释）
+    if cookie_line.startswith('#'):
+        continue
 
     # 准备签到信息
     configs = cookie_line.split("&")
